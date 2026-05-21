@@ -5,6 +5,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const ideaRoutes   = require("./routes/ideaRoutes");
 const authRoutes   = require("./routes/authRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
@@ -45,8 +46,7 @@ async function run() {
     // ── Routes ─────────────────────────────────────────────────
     app.use("/api/ideas",    ideaRoutes(ideasCollection));
     app.use("/api/auth",     authRoutes(usersCollection));
-    // commentsRoutes added in Phase 5
-    // app.use("/api/comments", commentRoutes(commentsCollection, ideasCollection));
+    app.use("/api/comments", commentRoutes(commentsCollection , ideasCollection)); // ✅ Uncommented and fixed
 
     // Health check
     app.get("/", (req, res) => {
