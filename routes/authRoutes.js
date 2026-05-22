@@ -4,7 +4,7 @@ const jwt     = require("jsonwebtoken");
 const authRoutes = (usersCollection) => {
   const router = express.Router();
 
-  // POST /api/auth/jwt — generate token on login
+  
   router.post("/jwt", async (req, res) => {
     try {
       const { email } = req.body;
@@ -22,7 +22,7 @@ const authRoutes = (usersCollection) => {
     }
   });
 
-  // POST /api/auth/logout — client clears token; endpoint for completeness
+  
   router.post("/logout", (req, res) => {
     res.json({ message: "Logged out successfully" });
   });
